@@ -1,13 +1,12 @@
 import os
 import re
 
-from api.helpers.validators import luhn_ok, phone_ok
+from api.helpers.validators import luhn_ok, name_ok, phone_ok
 
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-
 TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
 
-VERSION = "0.0.1"
+VERSION = "0.1.0"
 
 SESSION_TTL = 900
 
@@ -22,6 +21,8 @@ SYSTEM_PROMPT = (
 
 
 PLACEHOLDER_RE = re.compile(r"\[[A-Z]+_\d+\]")
+#english+hebrew patter
+NAME_PATTERN = r"^[a-zA-Z\u0590-\u05FF]+([ '-][a-zA-Z\u0590-\u05FF]+)*$"
 
 
 DETECTORS = [
@@ -30,4 +31,5 @@ DETECTORS = [
     ("IBAN", re.compile(r"\b[A-Z]{2}\d{2}(?: ?[A-Z0-9]{4}){2,7}(?: ?[A-Z0-9]{1,4})?\b"), None),
     ("IP", re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b"), None),
     ("PHONE", re.compile(r"(?<!\w)\+?\d[\d\s().-]{7,16}\d(?!\w)"), phone_ok),
+    ("NAME", re.compile(r"(?<!\w)\+?\d[\d\s().-]{7,16}\d(?!\w)"), name_ok)
 ]

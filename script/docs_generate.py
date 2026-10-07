@@ -3,7 +3,6 @@ from pathlib import Path
 
 from fastapi.openapi.utils import get_openapi
 
-# Импортируй свой объект app из основного модуля
 from main import app
 
 
