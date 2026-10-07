@@ -22,6 +22,7 @@ app = FastAPI(
     debug=False,
     lifespan=lifespan,
     title="SharkEyes API Privacy Proxy For LLM",
+    description="Privacy-first proxy that redacts PII before it reaches an LLM and restores it in the response",
     openapi_url=None, 
     docs_url=None, 
     redoc_url=None,
