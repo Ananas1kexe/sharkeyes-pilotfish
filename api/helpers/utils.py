@@ -1,5 +1,4 @@
 
-import re
 import time
 
 from core.config import SESSIONS

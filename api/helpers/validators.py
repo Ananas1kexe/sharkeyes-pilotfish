@@ -1,5 +1,6 @@
 import re
 
+
 def phone_ok(s: str) -> bool:
     return 9 <= len(re.sub(r"\D", "", s)) <= 15
 
