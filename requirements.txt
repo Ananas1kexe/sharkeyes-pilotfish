@@ -1,0 +1,9 @@
+fastapi
+slowapi
+httpx
+
+
+#CI
+ruff
+bandit
+pip-audit

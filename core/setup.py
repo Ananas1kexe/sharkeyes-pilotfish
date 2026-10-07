@@ -1,0 +1,1 @@
+DEBUG=True #change to False on Prod
