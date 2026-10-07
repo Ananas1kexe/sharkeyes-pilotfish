@@ -1,6 +1,11 @@
 .env
-.venv
-.idea
+.venv/
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
 .vscode
 .github/workflows/*
 .git
