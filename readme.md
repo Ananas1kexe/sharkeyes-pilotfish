@@ -179,7 +179,7 @@ Found a vulnerability? Please do not open a public issue. Use GitHub's **Report 
 
 Pilotfish is licensed under the [GNU AGPL-3.0](LICENSE). You can read, run, modify and self-host it for free. If you run a modified version as a network service, you must publish your changes under the same license.
 
-If AGPL does not fit your use case, for example when embedding Pilotfish into a closed-source product, a **commercial license** is available. Contact: `YOUR-EMAIL`.
+If AGPL does not fit your use case, for example when embedding Pilotfish into a closed-source product, a **commercial license** is available. Contact: `alexander@sharkeyes.dev`.
 
 ## Contributing
 

@@ -1,7 +1,7 @@
 fastapi
 slowapi
 httpx
-
+dotenv
 
 #CI
 ruff

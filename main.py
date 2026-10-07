@@ -1,10 +1,12 @@
 from contextlib import asynccontextmanager
 
 import httpx
+from dotenv import load_dotenv
 from fastapi import FastAPI
 
 from endpoints import sanitizer
 
+load_dotenv()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

@@ -1,10 +1,20 @@
+import os
 import re
 
 from api.helpers.validators import luhn_ok, phone_ok
 
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+
+TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
+
 VERSION = "0.0.1"
+
 SESSION_TTL = 900
+
+MAX_FILE_SIZE = 1_024_000
+
 SESSIONS: dict[str, dict] = {}
+
 SYSTEM_PROMPT = (
     "Some values in this conversation were replaced by placeholders such as "
     "[EMAIL_1] or [PHONE_2]. Treat them as opaque and reuse them verbatim when needed."
