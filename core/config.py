@@ -6,7 +6,7 @@ from api.helpers.validators import luhn_ok, name_ok, phone_ok
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("CHAT_ID")
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 
 SESSION_TTL = 900
 
