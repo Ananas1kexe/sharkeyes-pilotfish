@@ -21,8 +21,6 @@ SYSTEM_PROMPT = (
 
 
 PLACEHOLDER_RE = re.compile(r"\[[A-Z]+_\d+\]")
-#english+hebrew patter
-NAME_PATTERN = r"^[a-zA-Z\u0590-\u05FF]+([ '-][a-zA-Z\u0590-\u05FF]+)*$"
 
 
 DETECTORS = [
@@ -31,5 +29,5 @@ DETECTORS = [
     ("IBAN", re.compile(r"\b[A-Z]{2}\d{2}(?: ?[A-Z0-9]{4}){2,7}(?: ?[A-Z0-9]{1,4})?\b"), None),
     ("IP", re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b"), None),
     ("PHONE", re.compile(r"(?<!\w)\+?\d[\d\s().-]{7,16}\d(?!\w)"), phone_ok),
-    ("NAME", re.compile(r"(?<!\w)\+?\d[\d\s().-]{7,16}\d(?!\w)"), name_ok)
+    ("NAME", re.compile(r"""\b[A-Za-zа-яА-ЯёЁ\u0590-\u05FF'"]{2,}\b"""), name_ok),
 ]

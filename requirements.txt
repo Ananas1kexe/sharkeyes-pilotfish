@@ -7,3 +7,6 @@ dotenv
 ruff
 bandit
 pip-audit
+
+#start
+uvicorn

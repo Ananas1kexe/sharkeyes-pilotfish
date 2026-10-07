@@ -11,7 +11,7 @@ from repository.schemas.schemas import RedactIn, RestoreIn
 
 
 async def chat_handlers(body, x_provider_key):
-    mapping: dict[str, str] = {}  # живёт только в рамках этого запроса
+    mapping: dict[str, str] = {}  
     safe_messages = [{"role": m.role, "content": redact(m.content, mapping)} for m in body.messages]
  
     async with httpx.AsyncClient(timeout=60) as client:
@@ -40,7 +40,7 @@ async def redact_endpoint_handlers(body: RedactIn):
             raise HTTPException(404, "session not found or expired")
         sid = body.session_id
     else:
-        sid = secrets.token_urlsafe(16)  # 128 бит: не угадать
+        sid = secrets.token_urlsafe(16)
         session = SESSIONS[sid] = {"map": {}, "exp": 0}
     clean = redact(body.text, session["map"])
     session["exp"] = time.time() + SESSION_TTL

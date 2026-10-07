@@ -12,15 +12,13 @@ def find_spans(text: str) -> list[tuple[int, int, str]]:
     candidates.sort()
     spans, last_end = [], 0
     for start, _, end, label in candidates:
-        if start >= last_end:  # пересечения отбрасываем
+        if start >= last_end:  
             spans.append((start, end, label))
             last_end = end
     return spans
  
  
-# ---------- Ядро: redact / restore ----------
 def redact(text: str, mapping: dict[str, str]) -> str:
-    """Заменяет PII на плейсхолдеры. Одно значение = один плейсхолдер."""
     reverse = {v: k for k, v in mapping.items()}
     counters: dict[str, int] = defaultdict(int)
     for placeholder in mapping:

@@ -4,7 +4,7 @@ import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI
 
-from endpoints import sanitizer
+from endpoints import health, sanitizer
 
 load_dotenv()
 
@@ -14,6 +14,7 @@ async def lifespan(app: FastAPI):
         timeout=httpx.Timeout(10.0, connect=4.0),
         limits=httpx.Limits(max_connections=100, max_keepalive_connections=20)
     )
+    yield
 
 
 
@@ -28,3 +29,4 @@ app = FastAPI(
 )
 
 app.include_router(sanitizer.router, prefix="")
+app.include_router(health.router, prefix="")

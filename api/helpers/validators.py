@@ -1,9 +1,12 @@
 import re
 
-from core.config import NAME_PATTERN
-
-
+#english+hebrew patter
+NAME_PATTERN = r"^[a-zA-Zа-яА-ЯёЁ\u0590-\u05FF]+([ '-][a-zA-Zа-яА-ЯёЁ\u0590-\u05FF]+)*$"
+STOP_WORDS = {"mail", "card", "phone", "email", "name", "text"}
 def name_ok(s: str) -> bool:
+    word = s.lower()
+    if word in STOP_WORDS:
+        return False
     name = s.strip()
 
     if not 2 <= len(name) <= 50:
