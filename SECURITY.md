@@ -2,7 +2,7 @@
 
 ## Reporting a vulnerability
 
-Please do not open a public issue. Email **security@YOUR-DOMAIN** (or use GitHub's
+Please do not open a public issue. Email **security@sharkeyes.dev** (or use GitHub's
 "Report a vulnerability" button in the Security tab). We aim to acknowledge reports
 within 72 hours.
 
