@@ -1,6 +1,6 @@
 import re
 
-from api.helpers.utils import luhn_ok, phone_ok
+from api.helpers.validators import luhn_ok, phone_ok
 
 VERSION = "0.0.1"
 SESSION_TTL = 900

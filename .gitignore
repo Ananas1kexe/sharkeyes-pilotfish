@@ -2,7 +2,7 @@
 .venv
 .idea
 .vscode
-.github
+.github/workflows/*
 .git
 .ruff_cache
 .githooks
