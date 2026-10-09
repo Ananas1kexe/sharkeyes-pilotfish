@@ -21,7 +21,7 @@ print_error() {
     echo -e "${RED}✗ $1${RESET}\n"
 }
 
-cd test/ci || exit 1
+cd tests/ci || exit 1
 
 print_header "Running security checks"
 
