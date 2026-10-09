@@ -1,3 +1,4 @@
+import itertools
 import random
 import string
 import time
@@ -162,7 +163,7 @@ def test_spans_never_overlap_and_are_sorted():
     text = "a@b.io 192.168.1.10 +972 54-123-4567 4111 1111 1111 1111 8.8.8.8"
     spans = find_spans(text)
     assert spans == sorted(spans)
-    for (_, e1, _), (s2, _, _) in zip(spans, spans[1:]):
+    for (_, e1, _), (s2, _, _) in itertools.pairwise(spans, spans[1:]):
         assert e1 <= s2
 
 
