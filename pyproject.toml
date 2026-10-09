@@ -20,3 +20,4 @@ packages = ["api", "core", "endpoints", "repository", "assets"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
