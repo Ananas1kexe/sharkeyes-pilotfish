@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llm-shield"
+version = "0.1.0"
+description = "Local PII/secret redaction and prompt-injection guard for LLM calls. Hebrew-aware. Zero dependencies, zero servers."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+fastapi = ["fastapi>=0.100"]
+dev = ["pytest", "fastapi>=0.100", "httpx"]
+
+[tool.setuptools.packages.find]
+include = ["llm_shield*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

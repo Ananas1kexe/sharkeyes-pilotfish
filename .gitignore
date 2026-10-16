@@ -1,0 +1,13 @@
+.venv/
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.vscode
+.github/workflows/*
+.git
+.ruff_cache
+.githooks
+./docs/dev/*
