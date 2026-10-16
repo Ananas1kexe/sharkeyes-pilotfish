@@ -3,9 +3,8 @@ from __future__ import annotations
 import re
 import unicodedata
 from dataclasses import dataclass, field
-from  .core.config import _HIDDEN, _NIQQUD
+from  .core.config import _HIDDEN, _NIQQUD, _BASE64_BLOB, _FLAGS
 
-_FLAGS = re.IGNORECASE | re.MULTILINE
 
 _PATTERNS: list[tuple[str, re.Pattern, float]] = [
     (
@@ -74,7 +73,6 @@ _PATTERNS: list[tuple[str, re.Pattern, float]] = [
     ("persona_switch_ru", re.compile(r"\bты\s+теперь\s+", _FLAGS), 0.3),
 ]
 
-_BASE64_BLOB = re.compile(r"[A-Za-z0-9+/]{120,}={0,2}")
 
 
 @dataclass(frozen=True)
