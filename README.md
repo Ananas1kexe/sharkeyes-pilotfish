@@ -75,5 +75,3 @@ signal names only — never user text — so they are safe to log.
 pip install -e .[dev]
 pytest
 ```
-
-MIT licensed.
