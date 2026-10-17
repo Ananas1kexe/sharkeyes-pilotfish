@@ -70,6 +70,7 @@ _PATTERNS: list[tuple[str, re.Pattern, float]] = [
         re.compile(r"(?:покажи|выведи|раскрой|напечатай)[^.\n]{0,30}системн\S*\s+(?:промпт|инструкци)", _FLAGS),
         0.7,
     ),
+    ("pretend_en", re.compile(r"\bpretend\s+(that\s+)?you\s+(are|have)\b", _FLAGS), 0.4),
     ("persona_switch_ru", re.compile(r"\bты\s+теперь\s+", _FLAGS), 0.3),
 ]
 

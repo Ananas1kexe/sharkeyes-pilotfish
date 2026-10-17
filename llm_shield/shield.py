@@ -114,7 +114,10 @@ class Session:
 
     def restore_stream(self, chunks: AsyncIterable[str]) -> AsyncIterator[str]:
         return restore_aiter(self.vault, chunks)
-
+    
+    def found_kinds(self) -> list[str]:
+        return sorted(self.vault.counts())
+    
     def summary(self) -> dict[str, Any]:
         worst = max(self.injections, key=lambda r: r.score, default=None)
         return {

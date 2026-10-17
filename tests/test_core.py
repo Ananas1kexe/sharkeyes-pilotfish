@@ -228,3 +228,9 @@ def test_multipart_content():
         )
         assert out[0]["content"][0]["text"] == "mail [EMAIL_1]"
         assert out[0]["content"][1]["type"] == "image_url"
+
+def test_crypto_wallet():
+    with Shield().session() as s:
+        out = s.redact("send to 0x" + "ab12" * 10 + " now")
+        assert out == "send to [CRYPTO_1] now"
+        assert s.redact("0x1234") == "0x1234"  
