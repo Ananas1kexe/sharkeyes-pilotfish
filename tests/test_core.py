@@ -234,3 +234,9 @@ def test_crypto_wallet():
         out = s.redact("send to 0x" + "ab12" * 10 + " now")
         assert out == "send to [CRYPTO_1] now"
         assert s.redact("0x1234") == "0x1234"  
+
+def test_ip_at_end_of_sentence_and_version_numbers():
+    with Shield().session() as s:
+        assert s.redact("server 192.168.1.10.") == "server [IP_1]."
+        assert s.redact("see 192.168.1.10, then") == "see [IP_1], then"
+        assert s.redact("version 1.2.3.4.5") == "version 1.2.3.4.5"  

@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+sharkeyes.egg-info/PKG-INFO
+sharkeyes.egg-info/SOURCES.txt
+sharkeyes.egg-info/dependency_links.txt
+sharkeyes.egg-info/requires.txt
+sharkeyes.egg-info/top_level.txt
+tests/test_core.py
+tests/test_fastapi.py

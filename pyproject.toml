@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "llm-shield"
+name = "sharkeyes"
 version = "0.1.0"
 description = "Local PII/secret redaction and prompt-injection guard for LLM calls. Hebrew-aware. Zero dependencies, zero servers."
 readme = "README.md"
@@ -16,7 +16,7 @@ fastapi = ["fastapi>=0.100"]
 dev = ["pytest", "fastapi>=0.100", "httpx"]
 
 [tool.setuptools.packages.find]
-include = ["llm_shield*"]
+include = ["sharkeyes*"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]

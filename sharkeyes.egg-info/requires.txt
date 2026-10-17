@@ -1,0 +1,8 @@
+
+[dev]
+pytest
+fastapi>=0.100
+httpx
+
+[fastapi]
+fastapi>=0.100

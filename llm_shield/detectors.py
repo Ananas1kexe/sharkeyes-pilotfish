@@ -127,7 +127,7 @@ def default_detectors() -> list[Detector]:
         RegexDetector("IL_ID", r"(?<!\d)\d{9}(?!\d)", 60, validate=israeli_id_ok),
         RegexDetector(
             "IP",
-            r"(?<![\d.])(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)(?![\d.])",
+            r"(?<!\d)(?<!\d\.)(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)(?!\d)(?!\.\d)",
             50,
         ),
         RegexDetector("NAME", _EN_NAME, 40, group=1),
