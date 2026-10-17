@@ -6,8 +6,7 @@ __pycache__/
 *.pyd
 .pytest_cache/
 .vscode
-.github/workflows/*
 .git
 .ruff_cache
 .githooks
-./docs/dev/*
+./docs/
