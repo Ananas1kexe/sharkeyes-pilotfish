@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from typing import Callable, Iterable, Iterator, Optional
-from .core.config import _PRIVATE_KEY, _SECRET, _IL_PHONE, _INTL_PHONE, _EN_NAME, _RU_NAME, _HE_NAME
+from .core.config import (_PRIVATE_KEY, _SECRET, _IL_PHONE, _INTL_PHONE, _EN_NAME, _RU_NAME, _HE_NAME, _BEARER, _CVV)
 
 @dataclass(frozen=True)
 class Match:
@@ -120,8 +120,10 @@ def default_detectors() -> list[Detector]:
         RegexDetector("SECRET", _SECRET, 100),
         RegexDetector("EMAIL", r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}", 90),
         RegexDetector("CRYPTO", r"(?<![0-9A-Za-z])0x[0-9a-fA-F]{40}(?![0-9A-Za-z])", 88),
+        RegexDetector("BEARER", _BEARER, 85, group=1),
         IbanDetector(85),
         RegexDetector("CARD", r"(?<![\d-])[2-6](?:[ -]?\d){12,18}(?!\d)", 80, validate=luhn_ok),
+        RegexDetector("CVV", _CVV, 80, group=1),
         RegexDetector("PHONE", _IL_PHONE, 70),
         RegexDetector("PHONE", _INTL_PHONE, 65, validate=_intl_phone_ok),
         RegexDetector("IL_ID", r"(?<!\d)\d{9}(?!\d)", 60, validate=israeli_id_ok),

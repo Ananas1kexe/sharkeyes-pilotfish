@@ -235,6 +235,23 @@ def test_crypto_wallet():
         assert out == "send to [CRYPTO_1] now"
         assert s.redact("0x1234") == "0x1234"  
 
+
+def test_bearer_auth_token():
+    with Shield().session() as s:
+        out = s.redact("Authorization: Bearer abcdefghijklmnop1234")
+        assert out == "Authorization: Bearer [BEARER_1]"
+        assert s.redact("the bearer of bad news") == "the bearer of bad news"  
+
+def test_cvv_code():
+    with Shield().session() as s:
+        assert s.redact("cvv: 123") == "cvv: [CVV_1]"
+        assert s.redact("cvv: 1313") == "cvv: [CVV_2]"
+        assert s.redact("cvv 131345") == "cvv 131345"
+
+        assert s.redact("cvv is on the back") == "cvv is on the back"
+        assert s.redact("cvc 12") == "cvc 12"
+
+
 def test_ip_at_end_of_sentence_and_version_numbers():
     with Shield().session() as s:
         assert s.redact("server 192.168.1.10.") == "server [IP_1]."

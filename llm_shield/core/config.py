@@ -22,7 +22,8 @@ _SECRET = (
     r")"
 )
 _PRIVATE_KEY = r"-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]+?-----END [A-Z ]*PRIVATE KEY-----"
-
+_BEARER = r"(?i:\bbearer)[ \t]+([A-Za-z0-9._~+/=-]{16,})"
+_CVV =  r"(?i:\b(?:cvv2?|cvc2?|cv2|security\s+code))[ \t:=#-]*(\d{3,4})(?!\d)"
 _IL_PHONE = (
     r"(?<![\w+])(?:\+972|972|0)[-\s]?(?:5\d|7\d|[23489])[-\s]?\d{3}[-\s]?\d{4}(?!\d)"
 )
