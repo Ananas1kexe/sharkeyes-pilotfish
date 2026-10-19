@@ -6,14 +6,14 @@ from fastapi import Depends, FastAPI
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
-from llm_shield import Shield, Session
-from llm_shield.contrib_fastapi import install, session_dependency
-from llm_shield.vault import TOKEN_RE
+from sharkeyes import Shield, Session
+from sharkeyes.contrib_fastapi import install, session_dependency
+from sharkeyes.vault import TOKEN_RE
 
 shield = Shield(on_injection="raise")
 get_session = session_dependency(shield)
 
-app = FastAPI(title="llm-shield demo")
+app = FastAPI(title="SharkEyes demo")
 install(app)
 
 LLM_LOG: list[list[dict[str, Any]]] = []

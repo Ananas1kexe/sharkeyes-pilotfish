@@ -1,4 +1,4 @@
-# llm-shield
+# SharkEyes
 
 Local PII/secret redaction and prompt-injection guard for LLM calls.
 Hebrew-, Russian- and English-aware. **Zero dependencies, zero servers, zero telemetry** —
@@ -13,7 +13,7 @@ user sees ◄── restore ◄── "…send it to [EMAIL_1]…"    ◄── 
 ## Quick start
 
 ```python
-from llm_shield import Shield
+from sharkeyes import Shield
 
 shield = Shield(on_injection="raise")
 
@@ -31,7 +31,7 @@ with shield.session() as s:
 ### FastAPI
 
 ```python
-from llm_shield.contrib_fastapi import install, session_dependency
+from sharkeyes.contrib_fastapi import install, session_dependency
 
 install(app)                                    # InjectionBlocked -> HTTP 400
 get_session = session_dependency(shield)

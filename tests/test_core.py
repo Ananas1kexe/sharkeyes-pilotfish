@@ -2,7 +2,7 @@ import asyncio
 
 import pytest
 
-from llm_shield import (
+from sharkeyes import (
     InjectionBlocked,
     Shield,
     Vault,
@@ -13,7 +13,7 @@ from llm_shield import (
     luhn_ok,
     scan_injection,
 )
-from llm_shield.stream import StreamRestorer
+from sharkeyes.stream import StreamRestorer
 
 
 def test_israeli_id_checksum():

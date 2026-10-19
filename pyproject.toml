@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -8,12 +8,29 @@ version = "0.1.2"
 description = "Local PII/secret redaction and prompt-injection guard for LLM calls. Hebrew-aware. Zero dependencies, zero servers."
 readme = "README.md"
 requires-python = ">=3.9"
-license = { text = "AGPL-3.0-or-later" }
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
 dependencies = []
+authors = [{ name = "Alexander", email = "alexander@sharkeyes.dev" }]
+keywords = ["pii", "redaction", "privacy", "llm", "prompt-injection", "fastapi", "gdpr", "hebrew"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Topic :: Security",
+  "Topic :: Software Development :: Libraries",
+]
 
 [project.optional-dependencies]
 fastapi = ["fastapi>=0.100"]
 dev = ["pytest", "fastapi>=0.100", "httpx"]
+
+[project.urls]
+Homepage = "https://ananas1kexe.github.io/sharkeyes-pilotfish/"
+Documentation = "https://ananas1kexe.github.io/sharkeyes-pilotfish/"
+Repository = "https://github.com/Ananas1kexe/sharkeyes-pilotfish"
+Issues = "https://github.com/Ananas1kexe/sharkeyes-pilotfish/issues"
+Changelog = "https://github.com/Ananas1kexe/sharkeyes-pilotfish/blob/main/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 include = ["sharkeyes*"]
