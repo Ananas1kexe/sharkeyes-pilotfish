@@ -120,6 +120,8 @@ def default_detectors() -> list[Detector]:
         RegexDetector("SECRET", _SECRET, 100),
         RegexDetector("EMAIL", r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}", 90),
         RegexDetector("CRYPTO", r"(?<![0-9A-Za-z])0x[0-9a-fA-F]{40}(?![0-9A-Za-z])", 88),
+        RegexDetector("BITCOIN", r"(?<![0-9A-Za-z])bc1[ac-hj-np-z02-9]{25,59}(?![0-9A-Za-z])", 88),
+
         RegexDetector("BEARER", _BEARER, 85, group=1),
         IbanDetector(85),
         RegexDetector("CARD", r"(?<![\d-])[2-6](?:[ -]?\d){12,18}(?!\d)", 80, validate=luhn_ok),

@@ -235,6 +235,11 @@ def test_crypto_wallet():
         assert out == "send to [CRYPTO_1] now"
         assert s.redact("0x1234") == "0x1234"  
 
+def test_new_bitcon_wallet():
+    with Shield().session() as s:
+        assert s.redact("send to bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq please") == "send to [BITCOIN_1] please"
+        assert s.redact("bc1 is a prefix") == "bc1 is a prefix"
+        assert s.redact("abc1qar0abc1qar0abc1qar0") == "abc1qar0abc1qar0abc1qar0"
 
 def test_bearer_auth_token():
     with Shield().session() as s:

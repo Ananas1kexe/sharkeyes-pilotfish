@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: sharkeyes
-Version: 0.1.0
+Version: 0.1.1
 Summary: Local PII/secret redaction and prompt-injection guard for LLM calls. Hebrew-aware. Zero dependencies, zero servers.
 License: AGPL-3.0-or-later
 Requires-Python: >=3.9
