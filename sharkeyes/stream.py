@@ -6,6 +6,8 @@ from collections.abc import AsyncIterable, AsyncIterator, Iterable, Iterator
 from .vault import MAX_TOKEN_LEN, Vault
 
 
+
+
 class StreamRestorer:
     def __init__(self, vault: Vault) -> None:
         self._vault = vault
