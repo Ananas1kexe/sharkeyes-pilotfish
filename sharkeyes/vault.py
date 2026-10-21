@@ -1,8 +1,9 @@
 
 from __future__ import annotations
-from  .core.config import TOKEN_RE, MAX_TOKEN_LEN
+
 import re
 
+from .core.config import TOKEN_RE
 
 
 def _norm(kind: str, value: str) -> str:
@@ -19,8 +20,7 @@ def _norm(kind: str, value: str) -> str:
     if kind == "NAME":
         return " ".join(v.split()).lower()
     return v
-
-
+MAX_TOKEN_LEN = 40
 class Vault:
     def __init__(self) -> None:
         self._token_by_key: dict[tuple[str, str], str] = {}

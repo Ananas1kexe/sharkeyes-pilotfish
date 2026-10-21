@@ -450,6 +450,19 @@
     * { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
   }
+
+  .repo-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+  .chip-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 15px; color: var(--soft);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 6px 14px; background: rgba(26, 26, 36, 0.5);
+    transition: border-color 0.3s, color 0.2s, transform 0.3s;
+  }
+  .chip-link:hover { color: var(--text); border-color: var(--purple); transform: translateY(-2px); }
+  .head-actions { display: flex; align-items: center; gap: 12px; }
+  @media (max-width: 720px) { .head-actions .chip-link { display: none; } }
+  .chip-link .stars { color: var(--purple-light); font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
 </style>
 </head>
 <body id="top">
@@ -466,7 +479,10 @@
       <a href="#detects">What it catches</a>
       <a href="#limits">Limits</a>
     </nav>
-    <a class="btn btn-sm" href="#install">Install</a>
+    <div class="head-actions">
+      <a class="chip-link" href="https://github.com/Ananas1kexe/sharkeyes-pilotfish" target="_blank" rel="noopener" aria-label="SharkEyes on GitHub">GitHub <span data-gh-stars class="stars"></span></a>
+      <a class="btn btn-sm" href="#install">Install</a>
+    </div>
   </div>
 </header>
 
@@ -482,6 +498,10 @@
           <button class="copy" type="button" data-copy="pip install sharkeyes">Copy</button>
         </div>
         <a class="quiet" href="#how">See how it works</a>
+      </div>
+      <div class="repo-links">
+        <a class="chip-link" href="https://github.com/Ananas1kexe/sharkeyes-pilotfish" target="_blank" rel="noopener">GitHub <span data-gh-stars class="stars" aria-label="GitHub stars"></span></a>
+        <a class="chip-link" href="https://pypi.org/project/sharkeyes/" target="_blank" rel="noopener">PyPI package</a>
       </div>
     </div>
 
@@ -765,7 +785,7 @@ app = <span class="f">FastAPI</span>()
 <footer>
   <div class="wrap foot-in">
     <span>SharkEyes is open source under the AGPL-3.0-or-later license.</span>
-    <span>Version 0.1, early release.</span>
+    <span><a href="https://pypi.org/project/sharkeyes/">PyPI</a> · <a href="https://github.com/Ananas1kexe/sharkeyes-pilotfish">GitHub</a> · Version 0.1, early release.</span>
   </div>
 </footer>
 
@@ -852,6 +872,16 @@ app = <span class="f">FastAPI</span>()
     const highlightedOutput = redactedText.replace(/\[(.*?)\]/g, '<span class="redacted">[$1]</span>');
     demoOutput.innerHTML = `<strong style="color:var(--purple-light)">Redacted output:</strong><br>${highlightedOutput}`;
   });
+
+  // GitHub star count (public API, no key). Shows nothing if the request fails.
+  const REPO = 'Ananas1kexe/sharkeyes-pilotfish';
+  fetch('https://api.github.com/repos/' + REPO, { headers: { Accept: 'application/vnd.github+json' } })
+    .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+    .then(d => {
+      const text = '★ ' + Number(d.stargazers_count).toLocaleString('en-US');
+      document.querySelectorAll('[data-gh-stars]').forEach(el => { el.textContent = text; });
+    })
+    .catch(() => {});
 </script>
 
 </body>

@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-from typing import Any, AsyncIterator
+from collections.abc import AsyncIterator
+from typing import Any
 
 from fastapi import Depends, FastAPI
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
-from sharkeyes import Shield, Session
+from sharkeyes import Session, Shield
 from sharkeyes.contrib_fastapi import install, session_dependency
 from sharkeyes.vault import TOKEN_RE
 

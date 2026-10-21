@@ -2,9 +2,29 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Iterable, Iterator
 from dataclasses import dataclass
-from typing import Callable, Iterable, Iterator, Optional
-from .core.config import (_PRIVATE_KEY, _SECRET, _IL_PHONE, _INTL_PHONE, _EN_NAME, _RU_NAME, _HE_NAME, _BEARER, _CVV)
+from typing import Callable, Optional
+
+from .core.config import (
+    _AWS_SECRET,
+    _AZURE_KEY,
+    _BEARER,
+    _CVV,
+    _DISCORD_BOT,
+    _EN_NAME,
+    _HE_NAME,
+    _IL_PHONE,
+    _INTL_PHONE,
+    _NPMRC_AUTH,
+    _PRIVATE_KEY,
+    _RU_NAME,
+    _SECRET,
+    _SLACK_WEBHOOK,
+    _TELEGRAM_BOT,
+    _TWILIO,
+)
+
 
 @dataclass(frozen=True)
 class Match:
@@ -118,14 +138,21 @@ def default_detectors() -> list[Detector]:
     return [
         RegexDetector("SECRET", _PRIVATE_KEY, 100),
         RegexDetector("SECRET", _SECRET, 100),
+        RegexDetector("SECRET", _SLACK_WEBHOOK, 99),
+        RegexDetector("SECRET", _TELEGRAM_BOT, 99),
+        RegexDetector("SECRET", _DISCORD_BOT, 99),
+        RegexDetector("SECRET", _TWILIO, 99),
+        RegexDetector("SECRET", _AZURE_KEY, 99, group=1),
+        RegexDetector("SECRET", _NPMRC_AUTH, 99, group=1),
+        RegexDetector("SECRET", _AWS_SECRET, 99, group=1),
         RegexDetector("EMAIL", r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}", 90),
         RegexDetector("CRYPTO", r"(?<![0-9A-Za-z])0x[0-9a-fA-F]{40}(?![0-9A-Za-z])", 88),
         RegexDetector("BITCOIN", r"(?<![0-9A-Za-z])bc1[ac-hj-np-z02-9]{25,59}(?![0-9A-Za-z])", 88),
-
         RegexDetector("BEARER", _BEARER, 85, group=1),
         IbanDetector(85),
         RegexDetector("CARD", r"(?<![\d-])[2-6](?:[ -]?\d){12,18}(?!\d)", 80, validate=luhn_ok),
         RegexDetector("CVV", _CVV, 80, group=1),
+    
         RegexDetector("PHONE", _IL_PHONE, 70),
         RegexDetector("PHONE", _INTL_PHONE, 65, validate=_intl_phone_ok),
         RegexDetector("IL_ID", r"(?<!\d)\d{9}(?!\d)", 60, validate=israeli_id_ok),

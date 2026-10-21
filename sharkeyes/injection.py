@@ -3,8 +3,8 @@ from __future__ import annotations
 import re
 import unicodedata
 from dataclasses import dataclass, field
-from  .core.config import _HIDDEN, _NIQQUD, _BASE64_BLOB, _FLAGS
 
+from .core.config import _BASE64_BLOB, _FLAGS, _HIDDEN, _NIQQUD
 
 _PATTERNS: list[tuple[str, re.Pattern, float]] = [
     (

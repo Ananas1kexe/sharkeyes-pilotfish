@@ -1,7 +1,7 @@
 
 from __future__ import annotations
 
-from typing import AsyncIterable, AsyncIterator, Iterable, Iterator
+from collections.abc import AsyncIterable, AsyncIterator, Iterable, Iterator
 
 from .vault import MAX_TOKEN_LEN, Vault
 

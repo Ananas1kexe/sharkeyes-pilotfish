@@ -4,9 +4,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from fastapi.testclient import TestClient
-
 import demo_app
+from fastapi.testclient import TestClient
 
 client = TestClient(demo_app.app)
 

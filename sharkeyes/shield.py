@@ -1,6 +1,11 @@
 from __future__ import annotations
 
-from typing import Any, AsyncIterable, AsyncIterator, Awaitable, Callable, Iterable, Optional
+from collections.abc import AsyncIterable, AsyncIterator, Awaitable, Iterable
+from typing import (
+    Any,
+    Callable,
+    Optional,
+)
 
 from .detectors import Detector, default_detectors, find_all
 from .injection import InjectionReport, scan_injection
@@ -30,7 +35,7 @@ class Shield:
         self.on_injection = on_injection
         self.injection_threshold = injection_threshold
 
-    def session(self) -> "Session":
+    def session(self) -> Session:
         return Session(self)
 
     def wrap(
@@ -52,7 +57,7 @@ class Session:
         self.vault = Vault()
         self.injections: list[InjectionReport] = []
 
-    def __enter__(self) -> "Session":
+    def __enter__(self) -> Session:
         return self
 
     def __exit__(self, *exc: object) -> None:

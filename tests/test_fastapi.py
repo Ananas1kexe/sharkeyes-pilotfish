@@ -3,9 +3,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "examples"))
 
-from fastapi.testclient import TestClient  # noqa: E402
-
-import demo_app  # noqa: E402
+import demo_app
+from fastapi.testclient import TestClient
 
 client = TestClient(demo_app.app)
 
